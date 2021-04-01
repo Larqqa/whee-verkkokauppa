@@ -1,10 +1,16 @@
 import React from 'react';
 import './Product.scss';
 
-const Product = ({ id, image, name, description, price, currency}) => {
+function Product ({ product }) {
   function clickHandler(e) {
-    console.log(e.targett);
+    console.log(e.target);
   }
+
+  const image = product?.image;
+  const name = product?.name;
+  const description = product?.description;
+  const price = product?.price;
+  const currency = product?.currency;
 
   return (
     <div className="product">

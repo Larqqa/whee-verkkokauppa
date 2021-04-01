@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .header-wrapper {
   position: relative;
@@ -10,7 +11,6 @@
   display: grid;
 	grid-template-areas: "logo cart";
   grid-template-columns: max-content 1fr;
-  align-items: center;
   justify-content: space-between;
   align-items: center;
   align-content: center;
@@ -46,14 +46,8 @@
     color: $font-color;
     text-decoration: none;
     transform: translateY(0px);
-    transition:
-      transform $transition-length ease-in-out,
-      text-shadow $transition-length ease-in-out;
 
-    &:hover {
-      transform: translateY(-2px);
-      text-shadow: $light-shadow;
-    }
+    @include material-text-hover();
   }
 
   .slogan {

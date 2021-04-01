@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import './styles/variables.scss';
+@import './styles/mixins.scss';
 @import 'normalize.css';
 
+/* Setup font sizing for easy semi-dynamic relative sizing */
 html {
   font-size: 10px;
   line-height: 1.6;
@@ -25,20 +27,12 @@ button {
 	padding: $small-padding $main-padding;
 	text-transform: uppercase;
 	font-size: $button-size;
-  transform: translateY(0px);
-	transition:
-    transform $transition-length ease-in-out,
-    background-color $transition-length ease-in-out,
-    box-shadow $transition-length ease-in-out;
+
+  @include material-box-hover(background-color $transition-length ease-in-out);
+
 	height: fit-content;
 	width: fit-content;
 	cursor: pointer;
-
-  &:focus,
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $light-shadow;
-  }
 
   &:active {
     transition: none;

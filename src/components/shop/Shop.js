@@ -3,20 +3,10 @@ import Product from './Product';
 import './Shop.scss';
 import products from '../../assets/mockProducts.json';
 
-const Shop = () => {
+function Shop() {
   return (
     <div className="shop">
-      {products.map(product =>
-        <Product
-          key={product.id}
-          id={product.id}
-          image={product?.image}
-          name={product?.name}
-          description={product?.description}
-          price={product?.price}
-          currency={product?.currency}
-        />
-      )}
+      { products.map( product => <Product product={product} /> ) }
     </div>
   );
 }

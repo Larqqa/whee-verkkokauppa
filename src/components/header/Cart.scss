@@ -1,11 +1,11 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .shopping-cart {
   display: grid;
 	grid-template-areas: "info cart-icon";
   grid-template-columns: max-content 1fr;
   grid-template-rows: 100%;
-  align-items: center;
   justify-content: space-between;
   align-items: center;
   align-content: center;
@@ -49,15 +49,7 @@
   align-content: center;
   justify-content: center;
 
-  transform: translateY(0px);
-  transition:
-    transform $transition-length ease-in-out,
-    box-shadow $transition-length ease-in-out;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $light-shadow;
-  }
+  @include material-box-hover();
 
   img {
     color: white;

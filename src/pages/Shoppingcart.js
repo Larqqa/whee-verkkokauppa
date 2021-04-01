@@ -1,7 +1,7 @@
 import React from 'react';
 import './Shoppingcart.scss';
 
-const Shoppingcart = (props) => {
+function Shoppingcart(props) {
   return (
     <div className="shoppingcart">
       <h1>Shoppingcart</h1>

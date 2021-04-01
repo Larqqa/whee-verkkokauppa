@@ -2,7 +2,7 @@ import React from 'react';
 import Shop from '../components/shop/Shop';
 import './Home.scss';
 
-const Home = (props) => {
+function Home(props) {
   return (
     <div className="home">
       <Shop />

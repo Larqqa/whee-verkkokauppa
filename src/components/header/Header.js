@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cart from './Cart.js';
 import './Header.scss';
 
-const Header = () => {
+function Header() {
   return (
     <header className="main-header">
       <div className="header-wrapper">

@@ -1,0 +1,25 @@
+@mixin material-hover($transition...) {
+  transform: translateY(0px);
+	transition:
+    $transition,
+    transform $transition-length ease-in-out,
+    box-shadow $transition-length ease-in-out,
+    text-shadow $transition-length ease-in-out;
+
+  &:focus,
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $light-shadow;
+    text-shadow: $light-shadow;
+  }
+}
+
+@mixin material-box-hover($transition...) {
+  @include material-hover($transition);
+  text-shadow: none !important;
+}
+
+@mixin material-text-hover($transition...) {
+  @include material-hover($transition);
+  box-shadow: none !important;
+}
