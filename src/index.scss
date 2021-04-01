@@ -22,10 +22,12 @@ button {
 	box-shadow: none;
 	border: 1px solid $font-color;
 	font-weight: bold;
-	padding: $tiny-padding $main-padding;
+	padding: $small-padding $main-padding;
 	text-transform: uppercase;
 	font-size: $button-size;
+  transform: translateY(0px);
 	transition:
+    transform $transition-length ease-in-out,
     background-color $transition-length ease-in-out,
     box-shadow $transition-length ease-in-out;
 	height: fit-content;
@@ -34,7 +36,8 @@ button {
 
   &:focus,
   &:hover {
-    box-shadow: 2px 2px 2px $hover-color;
+    transform: translateY(-2px);
+    box-shadow: $light-shadow;
   }
 
   &:active {

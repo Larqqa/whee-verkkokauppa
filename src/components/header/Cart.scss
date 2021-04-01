@@ -1,1 +1,65 @@
 @import '../../styles/variables.scss';
+
+.shopping-cart {
+  display: grid;
+	grid-template-areas: "info cart-icon";
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+
+  @media screen and (max-width: $main-tablet-width) {
+  	grid-template-areas:
+      "cart-icon"
+      "info";
+		grid-template-columns: auto;
+		grid-template-rows: auto auto;
+	}
+}
+
+.cart-info {
+  grid-area: info;
+  font-style: italic;
+
+  @media screen and (min-width: $main-tablet-width) {
+    margin-right: $large-padding;
+  }
+
+  @media screen and (max-width: $main-tablet-width) {
+    align-self: start;
+  }
+}
+
+.cart-icon {
+  grid-area: cart-icon;
+  justify-self: center;
+  background-color: $font-color;
+  border-radius: 50%;
+
+  $size: $header-size;
+  width: $size;
+  height: $size;
+
+  padding: $small-padding;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  transform: translateY(0px);
+  transition:
+    transform $transition-length ease-in-out,
+    box-shadow $transition-length ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $light-shadow;
+  }
+
+  img {
+    color: white;
+  }
+}

@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   min-height: 100px;
-  padding: 0 $main-padding;
+  padding: $large-padding $main-padding;
   box-sizing: border-box;
   display: grid;
 	grid-template-areas: "logo cart";
@@ -16,8 +16,12 @@
   align-content: center;
   background-color: $header-color;
 
-  @media screen and (max-width: $main-tablet-width) {
-		grid-template-columns: auto auto;
+  @media screen and (max-width: $large-tablet-width) {
+		grid-template-columns: 1fr max-content;
+	}
+
+  @media screen and (max-width: $large-mobile-width) {
+		grid-template-columns: 60% 40%;
 	}
 }
 
@@ -27,24 +31,28 @@
   align-items: center;
 
   @media screen and (max-width: $main-tablet-width) {
-		grid-template-columns: 100%;
+    grid-template-columns: 100%;
 		grid-template-rows: auto auto;
 		grid-template-areas:
-			"image"
-			"data";
+    "image"
+    "data";
+    padding-right: $large-padding;
 	}
 
   .logo {
     font-family: $logo-font;
     font-size: $logo-size;
-    color: $font-color;
     line-height: $logo-size;
+    color: $font-color;
     text-decoration: none;
     transform: translateY(0px);
-    transition: transform $transition-length ease-in-out;
+    transition:
+      transform $transition-length ease-in-out,
+      text-shadow $transition-length ease-in-out;
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-2px);
+      text-shadow: $light-shadow;
     }
   }
 
@@ -53,6 +61,10 @@
 
     @media screen and (min-width: $main-tablet-width) {
       margin-left: $large-padding;
+    }
+
+    @media screen and (max-width: $main-tablet-width) {
+      align-self: start;
     }
   }
 }
