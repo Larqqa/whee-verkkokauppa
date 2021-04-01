@@ -1,0 +1,31 @@
+$background-color: #fff;
+$header-color: #e9e9e9;
+$font-color: #000;
+$hover-color: lighten($font-color, 30%);
+$shape-color: #ef5091;
+$success-color: #aaffaa;
+
+$large-padding: 3rem;
+$main-padding: 2rem;
+$small-padding: 1rem;
+$tiny-padding: .5rem;
+
+$logo-font: 'Pacifico', cursive;
+$logo-size: 6.6rem;
+
+$main-font: 'Playfair Display', serif;
+$main-size: 1.6rem;
+
+$button-size: 1.8rem;
+$header-size: 3.6rem;
+$description-size: 14px;
+
+$transition-length: 0.2s;
+
+$small-mobile-width: 500px;
+$main-mobile-width: 500px;
+$large-mobile-width: 600px;
+
+$small-tablet-width: 700px;
+$main-tablet-width: 800px;
+$large-tablet-width: 900px;

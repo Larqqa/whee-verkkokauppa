@@ -1,9 +1,27 @@
 import React from 'react';
-import './Product';
+import './Product.scss';
 
-const Product = (props) => {
+const Product = ({ id, image, name, description, price, currency}) => {
+  function clickHandler(e) {
+    console.log(e.targett);
+  }
+
   return (
-    <h1>product</h1>
+    <div className="product">
+      <div className="image">
+        <img src={image} alt="Productimage"/>
+      </div>
+      <div className="product-data">
+        <div className="description-wrapper">
+          <h3 className="name">{name}</h3>
+          <p className="description">{description}</p>
+        </div>
+        <div className="price-wrapper">
+          <span className="price">{price} {currency}</span>
+          <button className="add-to-cart" onClick={clickHandler}>Add to cart</button>
+        </div>
+      </div>
+    </div>
   );
 }
 

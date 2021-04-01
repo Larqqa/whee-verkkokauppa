@@ -1,5 +1,5 @@
 import React from 'react';
-import './Shoppingcart.css';
+import './Shoppingcart.scss';
 
 const Shoppingcart = (props) => {
   return (

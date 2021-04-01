@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './styles/variables.scss';
+@import 'normalize.css';
+
+html {
+  font-size: 10px;
+  line-height: 1.6;
+
+  @media screen and (max-width: $main-mobile-width) {
+    font-size: 8px;
+  }
+}
+
+p, a, div, span, button, li {
+  font-family: $main-font;
+  font-size: $main-size;
+}
+
+button {
+	background-color: transparent;
+  outline: none;
+	box-shadow: none;
+	border: 1px solid $font-color;
+	font-weight: bold;
+	padding: $tiny-padding $main-padding;
+	text-transform: uppercase;
+	font-size: $button-size;
+	transition:
+    background-color $transition-length ease-in-out,
+    box-shadow $transition-length ease-in-out;
+	height: fit-content;
+	width: fit-content;
+	cursor: pointer;
+
+  &:focus,
+  &:hover {
+    box-shadow: 2px 2px 2px $hover-color;
+  }
+
+  &:active {
+    transition: none;
+    background-color: $success-color;
+  }
+}

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from './Cart.js';
-import './Header.css';
+import './Header.scss';
 
 const Header = () => {
   return (
-    <header>
-      <div className="header__wrapper">
-        <div className="logo__wrapper">
+    <header className="main-header">
+      <div className="header-wrapper">
+        <div className="logo-wrapper">
           <Link to="/" className="logo">whee</Link>
-          <p>The most definitive shape store in the world</p>
+          <p className="slogan">The most definitive shape store in the world</p>
         </div>
         <Cart />
       </div>

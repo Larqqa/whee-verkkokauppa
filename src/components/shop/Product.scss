@@ -1,0 +1,137 @@
+@import '../../styles/variables.scss';
+
+.product {
+	max-width: 1000px;
+	width: 100%;
+	margin: calc($main-padding / 2);
+	position: relative;
+	display: grid;
+	grid-template-columns: 200px auto;
+	grid-template-areas: "image data";
+	padding: $small-padding 0;
+
+	@media screen and (max-width: $main-tablet-width) {
+		width: auto;
+		padding: $main-padding 0;
+	}
+
+	@media screen and (max-width: $main-mobile-width) {
+		grid-template-columns: 100%;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"image"
+			"data";
+	}
+}
+
+.image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: $main-padding;
+
+	@media screen and (max-width: $main-mobile-width) {
+		padding: $small-padding;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+
+		@media screen and (max-width: $main-mobile-width) {
+			width: auto;
+		}
+	}
+}
+
+.product-data {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-areas: "description price";
+
+	@media screen and (max-width: $main-tablet-width) {
+		grid-template-columns: 100%;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"description"
+			"price";
+	}
+}
+
+.description-wrapper {
+	display: grid;
+	grid-template-rows: 50% 50%;
+	grid-template-areas:
+		"name"
+		"description";
+	align-items: center;
+	padding: $main-padding;
+
+	@media screen and (max-width: $main-tablet-width) {
+		padding: $small-padding;
+	}
+
+	@media screen and (max-width: $main-mobile-width) {
+		text-align: center;
+		justify-items: center;
+		grid-template-rows: auto;
+	}
+
+	.name {
+		font-size: $header-size;
+		font-style: italic;
+		margin: 0;
+
+		@media screen and (max-width: $main-mobile-width) {
+			margin-bottom: $main-padding;
+		}
+	}
+
+	.description {
+		font-size: $description-size;
+		margin: 0;
+		white-space: break-spaces;
+	}
+}
+
+.price-wrapper {
+	display: grid;
+	grid-template-rows: 50% 50%;
+	grid-template-areas:
+		"price"
+		"cart-button";
+	justify-items: end;
+	align-items: center;
+	padding: $main-padding;
+
+	@media screen and (max-width: $main-tablet-width) {
+		grid-template-columns: max-content 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+			"price cart-button";
+		justify-self: start;
+		justify-items: center;
+		align-items: center;
+		padding: $small-padding;
+	}
+
+
+	@media screen and (max-width: $main-mobile-width) {
+		justify-self: center;
+	}
+
+	.price {
+		font-size: $header-size;
+		margin: 0;
+
+		@media screen and (max-width: $main-tablet-width) {
+			margin-right: $main-padding;
+		}
+	}
+
+	.add-to-cart {
+		@media screen and (max-width: $main-tablet-width) {
+			margin-left: $main-padding;
+		}
+	}
+}

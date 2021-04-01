@@ -1,0 +1,81 @@
+@import '../../styles/variables.scss';
+
+.header-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  padding: 0 $main-padding;
+  box-sizing: border-box;
+  display: grid;
+	grid-template-areas: "logo cart";
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  background-color: $header-color;
+
+  @media screen and (max-width: $main-tablet-width) {
+		grid-template-columns: auto auto;
+	}
+}
+
+.logo-wrapper {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+
+  @media screen and (max-width: $main-tablet-width) {
+		grid-template-columns: 100%;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"image"
+			"data";
+	}
+
+  .logo {
+    font-family: $logo-font;
+    font-size: $logo-size;
+    color: $font-color;
+    line-height: $logo-size;
+    text-decoration: none;
+    transform: translateY(0px);
+    transition: transform $transition-length ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .slogan {
+    font-style: italic;
+
+    @media screen and (min-width: $main-tablet-width) {
+      margin-left: $large-padding;
+    }
+  }
+}
+
+.shopping-cart {
+  justify-self: end;
+}
+
+.border {
+  min-width: 100%;
+	mask-image: url('data:image/svg+xml;utf8, <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path d="M -10 -10 L100 90 L210 -10" fill="white" stroke="none" vector-effect="non-scaling-stroke"/></svg>');
+	mask-size: 4% auto;
+  padding-top: 4%;
+	mask-repeat: repeat-x;
+	background-color: $header-color;
+
+  @media only screen and (max-width: $main-tablet-width) {
+    mask-size: 7% auto;
+    padding-top: 7%;
+  }
+
+  @media only screen and (max-width: $main-mobile-width) {
+    mask-size: 10% auto;
+    padding-top: 10%;
+  }
+}
