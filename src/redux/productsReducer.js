@@ -8,6 +8,6 @@ export const Products = createSlice({
   },
 })
 
-export const { } = Products.actions
+// export const { } = Products.actions
 
 export default Products.reducer

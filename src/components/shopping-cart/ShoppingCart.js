@@ -34,10 +34,12 @@ function ShoppingCart() {
         return (
           <div key={product.id}>
             <div>
+              <img src={product.image} className="product-image" alt={product.name} />
               <h3>{product?.name} <span>{product?.price} {product?.currency}</span></h3>
               <p>{product?.description}</p>
             </div>
-            <p>amount: {amount}</p>
+
+            <p>amount: <input value={amount} /></p>
             <p>total: {product?.price * amount}</p>
           <button className="add-to-cart" onClick={()=>incrementProduct(product.id)}>+</button>
           <button className="add-to-cart" onClick={()=>decrenmentProduct(product.id)}>-</button>
