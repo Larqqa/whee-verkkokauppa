@@ -1,11 +1,17 @@
 import React from 'react';
 import './Product.scss';
 
+import { useDispatch } from 'react-redux'
+import { addItem } from '../../redux/reducer';
+
 function Product ({ product }) {
-  function clickHandler(e) {
-    console.log(e.target);
+  const dispatch = useDispatch()
+
+  function addProductToCart(id) {
+    dispatch(addItem(id));
   }
 
+  const id = product?.id;
   const image = product?.image;
   const name = product?.name;
   const description = product?.description;
@@ -24,7 +30,7 @@ function Product ({ product }) {
         </div>
         <div className="price-wrapper">
           <span className="price">{price} {currency}</span>
-          <button className="add-to-cart" onClick={clickHandler}>Add to cart</button>
+          <button className="add-to-cart" onClick={()=>addProductToCart(id)}>Add to cart</button>
         </div>
       </div>
     </div>
