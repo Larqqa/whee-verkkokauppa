@@ -1,8 +1,7 @@
 import React from 'react';
-import './Product.scss';
-
 import { useDispatch } from 'react-redux'
-import { addItem } from '../../redux/reducer';
+import { addItem } from '../../redux/shoppingCartReducer';
+import './Product.scss';
 
 function Product ({ product }) {
   const dispatch = useDispatch()

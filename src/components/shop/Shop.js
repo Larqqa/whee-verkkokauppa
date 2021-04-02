@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import Product from './Product';
 import './Shop.scss';
-import products from '../../assets/mockProducts.json';
 
 function Shop() {
+  const products = useSelector((state) => state.Products)
+
   return (
     <div className="shop">
-      { products.map( product => <Product key={product.id} product={product} /> ) }
+      {products.map( product => <Product key={product.id} product={product} /> )}
     </div>
   );
 }

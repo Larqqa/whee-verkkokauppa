@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import ShoppingCart from './reducer';
+import ShoppingCart from './shoppingCartReducer';
+import Products from './productsReducer';
 
 export default configureStore({
   reducer: {
-    ShoppingCart: ShoppingCart
+    ShoppingCart: ShoppingCart,
+    Products: Products,
   },
 })

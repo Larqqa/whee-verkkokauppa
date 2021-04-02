@@ -10,6 +10,7 @@
   align-items: center;
   align-content: center;
   height: 100%;
+  position: relative;
 
   justify-self: end;
 
@@ -40,6 +41,7 @@
   justify-self: center;
   background-color: $font-color;
   border-radius: 50%;
+  box-sizing: content-box;
 
   $size: $header-size;
   width: $size;
@@ -48,12 +50,42 @@
   padding: $small-padding;
 
   display: flex;
+  align-items: center;
   align-content: center;
   justify-content: center;
+
+  &:active {
+    background-color: $header-color;
+  }
 
   @include material-box-hover();
 
   img {
     color: white;
   }
+}
+
+.cart-items {
+  position: absolute;
+  transform: translateY(100%);
+  right: 0;
+  width: 100%;
+  bottom: 0;
+  padding: $main-padding;
+  z-index: 1000;
+  background-color: $header-color;
+  box-shadow: $light-shadow;
+}
+
+.close-target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
 }
