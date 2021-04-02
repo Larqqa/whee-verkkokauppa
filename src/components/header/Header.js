@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cart from './Cart.js';
+import ShoppingCartButton from './ShoppingCart.js';
 import './Header.scss';
 
 function Header() {
@@ -11,7 +11,7 @@ function Header() {
           <Link to="/" className="logo">whee</Link>
           <p className="slogan">The most definitive shape store in the world</p>
         </div>
-        <Cart />
+        <ShoppingCartButton />
       </div>
       <div className="border"> </div>
     </header>

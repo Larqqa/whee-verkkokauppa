@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Shoppingcart from './pages/Shoppingcart';
+import ShoppingCart from './pages/ShoppingCart';
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
     name: 'Ostoskori',
     path: '/ostoskori',
     exact: true,
-    component: Shoppingcart,
+    component: ShoppingCart,
     link: true
   },
 ];
@@ -23,9 +23,9 @@ const routes = [
 const Routes = () => {
   return (
     <Switch>
-      {routes.map((route, i) =>
+      {routes.map(route =>
         <Route
-          key={i}
+          key={route.name}
           exact={route.exact}
           path={route.path}
           component={route.component}

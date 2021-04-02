@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.shopping-cart {
+.shopping-cart-button {
   display: grid;
 	grid-template-areas: "info cart-icon";
   grid-template-columns: max-content 1fr;
@@ -10,6 +10,8 @@
   align-items: center;
   align-content: center;
   height: 100%;
+
+  justify-self: end;
 
   @media screen and (max-width: $main-tablet-width) {
   	grid-template-areas:
