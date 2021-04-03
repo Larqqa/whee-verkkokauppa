@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.cart-product {
+  padding: $main-padding 0;
+  display: grid;
+  grid-template-areas:
+    "product"
+    "price";
+  align-items: center;
+}
+
+.product-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  img {
+    width: 30px;
+  }
+
+  .product-price {
+    text-align: end;
+  }
+}

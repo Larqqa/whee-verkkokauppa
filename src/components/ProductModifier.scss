@@ -1,0 +1,22 @@
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+.product-amount {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr max-content;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+  input {
+    width: 50px;
+  }
+
+  button {
+    padding: 0;
+    margin: $tiny-padding;
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -37,6 +37,8 @@
 }
 
 .cart-icon {
+  @include material-box-hover(background-color $transition-length ease-in-out);
+
   grid-area: cart-icon;
   justify-self: center;
   background-color: $font-color;
@@ -55,10 +57,9 @@
   justify-content: center;
 
   &:active {
+    transition: none;
     background-color: $header-color;
   }
-
-  @include material-box-hover();
 
   img {
     color: white;
@@ -71,59 +72,17 @@
   display: block;
   transform: translateY(100%);
   right: 0;
-  width: 100%;
+  max-width: 300px;
+  width: 100vw;
   bottom: 0;
   padding: $main-padding;
   z-index: 1000;
   background-color: $header-color;
   box-shadow: $bordering-shadow;
+  max-height: 400px;
+  overflow-y: auto;
 
   &.hide {
     display: none;
-  }
-}
-
-.cart-product {
-  padding: $main-padding 0;
-  display: grid;
-  grid-template-areas:
-    "product"
-    "price";
-  align-items: center;
-}
-
-.product-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-
-  img {
-    width: 30px;
-  }
-
-  .product-price {
-    text-align: end;
-  }
-}
-
-.product-amount {
-  display: grid;
-  grid-template-columns: 1fr max-content 1fr max-content;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-
-  input {
-    width: 30px;
-  }
-
-  button {
-    padding: 0;
-    margin: $tiny-padding;
-    width: 30px;
-    height: 30px;
   }
 }

@@ -19,7 +19,9 @@ p, a, div, span, button, li {
 }
 
 button {
-	background-color: transparent;
+  @include material-box-hover(background-color $transition-length ease-in-out);
+
+  background-color: transparent;
   outline: none;
 	box-shadow: none;
 	border: 1px solid $font-color;
@@ -27,9 +29,6 @@ button {
 	padding: $small-padding $main-padding;
 	text-transform: uppercase;
 	font-size: $button-size;
-
-  @include material-box-hover(background-color $transition-length ease-in-out);
-
 	height: fit-content;
 	width: fit-content;
 	cursor: pointer;

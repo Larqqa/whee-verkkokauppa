@@ -18,6 +18,15 @@ export const ShoppingCart = createSlice({
         delete state[action.payload];
       }
     },
+    setItem: (state, action) => {
+      if (state[action.payload.id]) {
+        state[action.payload.id] = action.payload.amount;
+      }
+
+      if (action.payload.amount <= 0) {
+        delete state[action.payload.id];
+      }
+    },
     deleteItem: (state, action) => {
       if(state[action.payload] !== null) {
         delete state[action.payload];
@@ -29,6 +38,6 @@ export const ShoppingCart = createSlice({
   },
 })
 
-export const { addItem, removeItem, deleteItem, deleteCart } = ShoppingCart.actions
+export const { addItem, removeItem, setItem, deleteItem, deleteCart } = ShoppingCart.actions
 
 export default ShoppingCart.reducer

@@ -1,14 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
-import { addItem } from '../../redux/shoppingCartReducer';
 import './Product.scss';
 
-function Product ({ product }) {
-  const dispatch = useDispatch()
-
-  function addProductToCart(id) {
-    dispatch(addItem(id));
-  }
+function Product ({ product, children}) {
 
   const id = product?.id;
   const image = product?.image;
@@ -29,7 +22,7 @@ function Product ({ product }) {
         </div>
         <div className="price-wrapper">
           <span className="price">{price} {currency}</span>
-          <button className="add-to-cart" onClick={()=>addProductToCart(id)}>Add to cart</button>
+          {children}
         </div>
       </div>
     </div>

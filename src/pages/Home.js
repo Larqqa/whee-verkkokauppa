@@ -1,5 +1,5 @@
 import React from 'react';
-import Shop from '../components/shop/Shop';
+import Shop from '../containers/shop/Shop';
 import './Home.scss';
 
 function Home(props) {
