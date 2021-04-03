@@ -3,14 +3,16 @@
 
 .product-amount {
   display: grid;
-  grid-template-columns: 1fr max-content 1fr max-content;
+  grid-template-columns: 1fr 1fr 1fr max-content;
   justify-content: center;
   align-items: center;
   align-content: center;
   text-align: center;
 
   input {
-    width: 50px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   button {

@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import Product from './Product';
-import useOutsideClick from '../../../hooks/useOutsideClick';
-import cart from '../../../assets/icons/shopping_cart_white_24dp.svg';
-import './ShoppingCart.scss';
+import useOutsideClick from '../../hooks/useOutsideClick';
+import cart from '../../assets/icons/shopping_cart_white_24dp.svg';
+import './ShoppingCartPopUp.scss';
 
-function ShoppingCart () {
+function ShoppingCartPopUp () {
   const [ popUp, setPopUp ] = useState(false);
   const cartState = useSelector((state) => state.ShoppingCart);
   const products = useSelector((state) => state.Products);
@@ -34,18 +34,6 @@ function ShoppingCart () {
     return 'No items in cart';
   };
 
-  function GetCartProducts() {
-    return Object.entries(cartState).map(([itemId, amount]) => {
-      const product = products.find(product => product.id === itemId);
-      totalPrice += product.price * amount;
-      currency = product.currency;
-
-      return (
-        <Product key={product.id} product={product} amount={amount} />
-      );
-    });
-  }
-
   return (
     <div className="shopping-cart-button">
       <p className="cart-info"><GetCartAmount /></p>
@@ -54,13 +42,23 @@ function ShoppingCart () {
       </button>
 
       <div className={`cart-items ${popUp ? 'show' : 'hide'}`} ref={popUpRef}>
-        <Link to="/ostoskori" onClick={hideCartPopUp} className="go-to-cart">Go to cart</Link>
-        <GetCartProducts />
-        <p>Total price: {totalPrice} {currency}</p>
+        <div className="cart-wrapper">
+          <Link to="/ostoskori" onClick={hideCartPopUp} className="go-to-cart">Go to cart</Link>
+          {Object.entries(cartState).map(([itemId, amount]) => {
+              const product = products.find(product => product.id === itemId);
+              totalPrice += product.price * amount;
+              currency = product.currency;
+
+              return (
+                <Product key={product.id} product={product} amount={amount} />
+              );
+            })}
+          <p>Total price: {totalPrice} {currency}</p>
+        </div>
       </div>
     </div>
   );
 
 }
 
-export default ShoppingCart;
+export default ShoppingCartPopUp;

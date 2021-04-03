@@ -15,10 +15,10 @@ function useInput(id, initialValue) {
     if (isNaN(amount)) {
       setValue(event.target.value);
     } else {
-      setValue(parseInt(event.target.value));
+      setValue(amount);
       dispatch(setItem({
         "id": id,
-        "amount": parseInt(event.target.value)
+        "amount": amount
       }));
     }
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteCart } from '../redux/shoppingCartReducer';
 import Product from '../components/Product';
@@ -14,10 +15,18 @@ function ShoppingCart() {
     dispatch(deleteCart());
   }
 
+  if (!cartState || Object.keys(cartState).length === 0) {
+    return (
+      <div className="shopping-cart">
+        <h2>No items in cart.</h2>
+        <Link to="/">Back to shop</Link>
+      </div>
+    );
+  }
+
   return (
     <div className="shopping-cart">
-      {(cartState && Object.keys(cartState).length !== 0) &&
-        <button className="add-to-cart" onClick={emptyCart}>Empty cart</button>}
+      <button className="add-to-cart" onClick={emptyCart}>Clear cart</button>
 
       {Object.entries(cartState).map(([itemId, amount]) => {
         const product = products.find(product => product.id === itemId);
@@ -30,7 +39,6 @@ function ShoppingCart() {
       })}
     </div>
   );
-
 }
 
 export default ShoppingCart;

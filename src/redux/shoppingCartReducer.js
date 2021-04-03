@@ -27,7 +27,7 @@ export const ShoppingCart = createSlice({
     setItem: (state, action) => {
       const productId = action.payload?.id;
       const amount = action.payload?.amount;
-      if(!productId || !amount) return;
+      if(!productId || amount === undefined) return;
 
       if (amount < 1) {
         delete state[productId];

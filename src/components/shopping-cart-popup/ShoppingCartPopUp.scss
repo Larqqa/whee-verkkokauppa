@@ -1,11 +1,13 @@
-@import '../../../styles/variables.scss';
-@import '../../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .shopping-cart-button {
   display: grid;
-	grid-template-areas: "info cart-icon";
+	grid-template-areas:
+    "info cart-icon"
+    "cart-items cart-items";
   grid-template-columns: max-content 1fr;
-  grid-template-rows: 100%;
+  grid-template-rows: 100% 100%;
   justify-content: space-between;
   align-items: center;
   align-content: center;
@@ -68,6 +70,45 @@
 }
 
 .cart-items {
+  position: relative;
+  grid-column: 2;
+
+  &.hide {
+    display: none;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: $header-color;
+    top: 0;
+    right: 15px;
+    position: absolute;
+    transform:
+      translateY(-50%)
+      rotate(45deg);
+    z-index: 1001;
+    box-shadow: $bordering-shadow;
+    pointer-events: none;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 25px;
+    background: $header-color;
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1001;
+    pointer-events: none;
+  }
+}
+
+.cart-wrapper {
   position: absolute;
   display: block;
   transform: translateY(100%);
@@ -81,8 +122,4 @@
   box-shadow: $bordering-shadow;
   max-height: 400px;
   overflow-y: auto;
-
-  &.hide {
-    display: none;
-  }
 }

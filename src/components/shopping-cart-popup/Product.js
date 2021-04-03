@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductModifier from '../../../components/ProductModifier';
+import ProductModifier from '../ProductModifier';
 import './Product.scss';
 
 function Product({ product, amount }) {
