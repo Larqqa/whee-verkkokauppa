@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, removeItem, deleteItem } from '../redux/shoppingCartReducer';
 import useInput from '../hooks/useInput';
@@ -9,24 +9,39 @@ import deleteForever from '../assets/icons/delete_forever_black_24dp.svg';
 import './ProductModifier.scss';
 
 function ProductModifier ({ product, amount, removeItemButton }) {
+  const dispatch = useDispatch();
   const id = product?.id;
   const price = product?.price;
   const currency = product?.currency;
-  const { value, setValue, bind } = useInput(id, amount);
-  const dispatch = useDispatch();
+  const { setValue, bind } = useInput(id, amount);
+
+  // Update the input value when the redux store is updated
+  useEffect(()=> {
+    setValue(amount);
+  }, [setValue, amount])
 
   function incrementProduct(id) {
     dispatch(addItem(id));
-    setValue(amount + 1);
   }
 
   function decrenmentProduct(id) {
     dispatch(removeItem(id));
-    setValue(amount - 1);
   }
 
   function removeProduct(id) {
     dispatch(deleteItem(id));
+  }
+
+  function RemoveItemButton() {
+    if (removeItemButton && amount > 1) {
+      return (
+        <button className="remove" onClick={() => removeProduct(id)}>
+          <img src={deleteForever} alt="delete" />
+        </button>
+      );
+    }
+
+    return false;
   }
 
   return (
@@ -38,7 +53,7 @@ function ProductModifier ({ product, amount, removeItemButton }) {
         }
       </button>
 
-      <input type="number" value={value} {...bind} />
+      <input type="number" {...bind} />
 
       <button className="increment" onClick={() => incrementProduct(id)}>
         <img src={add} alt="plus" />
@@ -46,11 +61,7 @@ function ProductModifier ({ product, amount, removeItemButton }) {
 
       <span className="product-price">= {price * amount} {currency}</span>
 
-      {(removeItemButton && amount > 1) &&
-        <button className="remove" onClick={() => removeProduct(id)}>
-          <img src={deleteForever} alt="delete" />
-        </button>
-      }
+      <RemoveItemButton />
     </div>
   );
 }

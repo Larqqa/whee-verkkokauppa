@@ -1,9 +1,8 @@
 import React from 'react';
-import ProductModifier from '../../components/ProductModifier';
+import ProductModifier from '../../../components/ProductModifier';
 import './Product.scss';
 
 function Product({ product, amount }) {
-  const id = product?.id;
   const image = product?.image;
   const name = product?.name;
   const price = product?.price;

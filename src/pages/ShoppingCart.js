@@ -1,5 +1,5 @@
 import React from 'react';
-import ShoppingCartComponent from '../containers/shopping-cart/ShoppingCart';
+import ShoppingCartComponent from '../containers/ShoppingCart';
 import './ShoppingCart.scss';
 
 function ShoppingCart() {

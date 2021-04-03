@@ -2,8 +2,6 @@ import React from 'react';
 import './Product.scss';
 
 function Product ({ product, children}) {
-
-  const id = product?.id;
   const image = product?.image;
   const name = product?.name;
   const description = product?.description;

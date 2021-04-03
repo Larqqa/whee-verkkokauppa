@@ -5,31 +5,42 @@ export const ShoppingCart = createSlice({
   initialState: {},
   reducers: {
     addItem: (state, action) => {
-      if (state[action.payload]) {
-        state[action.payload] += 1;
+      const productId = action?.payload;
+      if(!productId) return;
+
+      if (state[productId]) {
+        state[productId] += 1;
       } else {
-        state[action.payload] = 1;
+        state[productId] = 1;
       }
     },
     removeItem: (state, action) => {
-      if (state[action.payload] > 1) {
-        state[action.payload] -= 1;
-      } else if(state[action.payload] !== null) {
-        delete state[action.payload];
+      const productId = action?.payload;
+      if(!productId) return;
+
+      if (state[productId] > 1) {
+        state[productId] -= 1;
+      } else if(state[productId] !== null) {
+        delete state[productId];
       }
     },
     setItem: (state, action) => {
-      if (state[action.payload.id]) {
-        state[action.payload.id] = action.payload.amount;
-      }
+      const productId = action.payload?.id;
+      const amount = action.payload?.amount;
+      if(!productId || !amount) return;
 
-      if (action.payload.amount <= 0) {
-        delete state[action.payload.id];
+      if (amount < 1) {
+        delete state[productId];
+      } else if (state[productId]) {
+        state[productId] = amount;
       }
     },
     deleteItem: (state, action) => {
-      if(state[action.payload] !== null) {
-        delete state[action.payload];
+      const productId = action?.payload;
+      if(!productId) return;
+
+      if(state[productId] !== null) {
+        delete state[productId];
       }
     },
     deleteCart: () => {

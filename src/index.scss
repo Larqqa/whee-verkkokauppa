@@ -3,7 +3,6 @@
 @import './styles/mixins.scss';
 @import 'normalize.css';
 
-/* Setup font sizing for easy semi-dynamic relative sizing */
 html {
   font-size: 10px;
   line-height: 1.6;
@@ -21,16 +20,16 @@ p, a, div, span, button, li {
 button {
   @include material-box-hover(background-color $transition-length ease-in-out);
 
+	height: fit-content;
+	width: fit-content;
+	padding: $small-padding $main-padding;
   background-color: transparent;
+	font-size: $button-size;
+	font-weight: bold;
+	text-transform: uppercase;
   outline: none;
 	box-shadow: none;
 	border: 1px solid $font-color;
-	font-weight: bold;
-	padding: $small-padding $main-padding;
-	text-transform: uppercase;
-	font-size: $button-size;
-	height: fit-content;
-	width: fit-content;
 	cursor: pointer;
 
   &:active {

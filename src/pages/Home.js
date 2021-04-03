@@ -1,8 +1,8 @@
 import React from 'react';
-import Shop from '../containers/shop/Shop';
+import Shop from '../containers/Shop';
 import './Home.scss';
 
-function Home(props) {
+function Home() {
   return (
     <div className="home">
       <Shop />

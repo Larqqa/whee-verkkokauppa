@@ -8,11 +8,19 @@ function useInput(id, initialValue) {
   const dispatch = useDispatch();
 
   function setItemAmount(event) {
-    setValue(parseInt(event.target.value));
-    dispatch(setItem({
-      "id": id,
-      "amount": parseInt(event.target.value)
-    }));
+    const amount = parseInt(event.target.value);
+
+    // Check isNaN to allow for empty input,
+    // but don't update the cart state to it
+    if (isNaN(amount)) {
+      setValue(event.target.value);
+    } else {
+      setValue(parseInt(event.target.value));
+      dispatch(setItem({
+        "id": id,
+        "amount": parseInt(event.target.value)
+      }));
+    }
   }
 
   return {
@@ -20,7 +28,7 @@ function useInput(id, initialValue) {
     setValue,
     bind: {
       value,
-      onChange: setItemAmount
+      onChange: setItemAmount,
     }
   };
 };

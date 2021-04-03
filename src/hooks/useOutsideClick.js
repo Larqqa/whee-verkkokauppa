@@ -3,9 +3,11 @@ import { useEffect } from "react";
 function useOutsideClick(refArray, callback, value) {
   useEffect(() => {
     function handleClickOutside(event) {
-      if (!refArray.length) {
+
+      // Check that refArray is an array, else handle it as a single ref
+      if (Array.isArray(refArray) && !refArray.find(ref => ref.current && ref.current.contains(event.target))) {
         callback(value);
-      } else if (!refArray.find(ref => ref.current && ref.current.contains(event.target))) {
+      } else if (refArray.current && !refArray.current.contains(event.target)) {
         callback(value);
       }
     }
