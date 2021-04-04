@@ -10,6 +10,8 @@ function ShoppingCart() {
   const dispatch = useDispatch()
   const cartState = useSelector((state) => state.ShoppingCart);
   const products = useSelector((state) => state.Products)
+  let totalprice = 0;
+  let currency;
 
   function emptyCart() {
     dispatch(deleteCart());
@@ -27,16 +29,20 @@ function ShoppingCart() {
   return (
     <div className="shopping-cart-component">
       <button className="delete-cart" onClick={emptyCart}>Clear cart</button>
+      <div className="product-wrapper">
+        {Object.entries(cartState).map(([itemId, amount]) => {
+          const product = products.find(product => product.id === itemId);
+          totalprice += product.price * amount;
+          currency = product.currency;
 
-      {Object.entries(cartState).map(([itemId, amount]) => {
-        const product = products.find(product => product.id === itemId);
-
-        return (
-          <Product key={product.id} product={product}>
-            <ProductModifier product={product} amount={amount} removeItemButton={true} />
-          </Product>
-        );
-      })}
+          return (
+            <Product key={product.id} product={product}>
+              <ProductModifier product={product} amount={amount} removeItemButton={true} />
+            </Product>
+          );
+        })}
+      </div>
+      <p className="total-price">Total Price: {totalprice} {currency}</p>
     </div>
   );
 }

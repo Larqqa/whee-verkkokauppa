@@ -1,8 +1,8 @@
 import React from 'react';
 import ProductModifier from '../ProductModifier';
-import './Product.scss';
+import './CartProduct.scss';
 
-function Product({ product, amount }) {
+function CartProduct({ product, amount }) {
   const image = product?.image;
   const name = product?.name;
   const price = product?.price;
@@ -21,4 +21,4 @@ function Product({ product, amount }) {
 
 }
 
-export default Product;
+export default CartProduct;

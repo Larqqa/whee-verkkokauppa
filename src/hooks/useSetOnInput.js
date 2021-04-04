@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { setItem } from '../redux/shoppingCartReducer';
 
-
-function useInput(id, initialValue) {
+function useSetOnInput(id, initialValue) {
   const [value, setValue] = useState(initialValue);
   const dispatch = useDispatch();
 
@@ -33,4 +32,4 @@ function useInput(id, initialValue) {
   };
 };
 
-export default useInput;
+export default useSetOnInput;

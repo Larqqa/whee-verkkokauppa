@@ -3,12 +3,11 @@
 .product {
 	max-width: 1000px;
 	width: 100%;
-	margin: calc($main-padding / 2);
+	margin: $small-padding 0;
 	position: relative;
 	display: grid;
 	grid-template-columns: 200px auto;
 	grid-template-areas: "image data";
-	padding: $small-padding 0;
 
 	@media screen and (max-width: $main-tablet-width) {
 		width: auto;
@@ -46,7 +45,7 @@
 
 .product-data {
 	display: grid;
-	grid-template-columns: 1fr auto;
+	grid-template-columns: 3fr 2fr;
 	grid-template-areas: "description price";
 
 	@media screen and (max-width: $main-tablet-width) {
@@ -130,6 +129,7 @@
 	}
 
 	.add-to-cart {
+
 		@media screen and (max-width: $main-tablet-width) {
 			margin-left: $main-padding;
 		}

@@ -8,21 +8,34 @@
 	grid-template-rows: auto;
   justify-content: center;
 
-  .equals {
-    display: none;
+  .delete-cart {
+    justify-self: end;
   }
 
-  .price {
-    display: grid;
-    grid-template-areas: "price total";
-    grid-template-columns: 1fr 1fr;
+  .price-wrapper {
+    grid-template-rows: auto;
+    grid-template-areas:
+      "price"
+      "amount";
+
+    .price {
+      grid-area: price;
+    }
+
+    .amount {
+      grid-area: amount;
+    }
+
+    .equals, .product-total {
+      font-size: $subheading-size;
+      margin: 0;
+    }
   }
 
-  .product-total {
-    display: none;
+  .total-price {
+    padding: $main-padding;
+    text-align: right;
+    font-size: $subheading-size;
+    font-style: italic;
   }
-}
-
-.delete-cart {
-  justify-self: end;
 }

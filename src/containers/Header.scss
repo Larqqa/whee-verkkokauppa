@@ -4,8 +4,6 @@
 .header-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 150px;
   padding: $large-padding $main-padding;
   box-sizing: border-box;
   display: grid;
@@ -39,12 +37,17 @@
     padding-right: $large-padding;
 	}
 
+  a {
+    text-decoration: none;
+  }
+
   .logo {
+    margin: 0;
     font-family: $logo-font;
     font-size: $logo-size;
+    font-weight: normal;
     line-height: $logo-size;
     color: $font-color;
-    text-decoration: none;
     transform: translateY(0px);
 
     @include material-text-hover();
@@ -79,5 +82,48 @@
   @media only screen and (max-width: $main-mobile-width) {
     mask-size: 10% auto;
     padding-top: 10%;
+  }
+}
+
+.fixed-header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: -100%;
+  transition: top .2s ease-in-out;
+
+  &.show {
+    top: 0;
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  .header-wrapper {
+    grid-template-columns: max-content 1fr;
+    padding: $small-padding $main-padding;
+  }
+
+  .logo {
+    font-size: $small-header-size;
+  }
+
+  .shopping-cart-button {
+    grid-template-areas: "info cart-icon";
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: auto;
+  }
+
+  .cart-icon {
+    padding: $tiny-padding;
+    width: 30px;
+    height: 30px;
+  }
+
+  .cart-info {
+    margin: 0;
+    margin-right: $small-padding;
+    align-self: center;
   }
 }

@@ -122,17 +122,17 @@
 .cart-wrapper {
   position: absolute;
   display: block;
-  transform: translateY(100%);
   right: 0;
-  max-width: 300px;
-  width: 100vw;
   bottom: 0;
+  width: 100vw;
+  max-width: 300px;
+  max-height: 500px;
   padding: $main-padding;
-  z-index: 1000;
   background-color: $header-color;
   box-shadow: $bordering-shadow;
-  max-height: 400px;
+  transform: translateY(100%);
   overflow-y: auto;
+  z-index: 1000;
 
   @media screen and (max-width: $large-mobile-width) {
     display: flex;
@@ -148,8 +148,12 @@
 }
 
 .close-popup {
-  padding: $small-padding;
+  display: flex;
+  align-items: center;
   align-self: flex-end;
+  padding: $small-padding;
+  width: 45px;
+  height: 45px;
 
   @media screen and (min-width: $large-mobile-width) {
     display: none;

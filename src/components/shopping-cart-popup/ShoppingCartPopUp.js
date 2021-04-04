@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import Product from './Product';
+import CartProduct from './CartProduct';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import cart from '../../assets/icons/shopping_cart_white_24dp.svg';
 import close from '../../assets/icons/clear_black_24dp.svg';
@@ -28,8 +28,8 @@ function ShoppingCartPopUp () {
 
   function GetCartAmount() {
     if (cartState && Object.keys(cartState).length) {
-      // const total = Object.values(cartState).reduce((sum, value) => sum + value);
-      const total = Object.keys(cartState).length;
+      const total = Object.values(cartState).reduce((sum, value) => sum + value);
+      // const total = Object.keys(cartState).length;
       const cartText = `${total === 1 ? 'item' : 'items'} in cart`;
       return `${total} ${cartText}`;
     }
@@ -58,11 +58,11 @@ function ShoppingCartPopUp () {
               currency = product.currency;
 
               return (
-                <Product key={product.id} product={product} amount={amount} />
+                <CartProduct key={product.id} product={product} amount={amount} />
               );
             })}
             <div className="check-out">
-              <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">Check out</Link>
+              <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">View cart</Link>
               <p className="total-price">Total price: {totalPrice} {currency}</p>
             </div>
             </>

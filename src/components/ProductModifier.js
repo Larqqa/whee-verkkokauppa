@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, removeItem, deleteItem } from '../redux/shoppingCartReducer';
-import useInput from '../hooks/useInput';
+import useSetOnInput from '../hooks/useSetOnInput';
 import add from '../assets/icons/add_black_24dp.svg';
 import remove from '../assets/icons/remove_black_24dp.svg';
 import deleteForever from '../assets/icons/delete_forever_black_24dp.svg';
@@ -12,7 +12,7 @@ function ProductModifier ({ product, amount, removeItemButton }) {
   const id = product?.id;
   const price = product?.price;
   const currency = product?.currency;
-  const { setValue, bind } = useInput(id, amount);
+  const { setValue, bind } = useSetOnInput(id, amount);
   const hasDeleteButton = removeItemButton && amount > 1;
 
   // Update the input value when the redux store is updated
@@ -30,12 +30,6 @@ function ProductModifier ({ product, amount, removeItemButton }) {
 
   function removeProduct(id) {
     dispatch(deleteItem(id));
-  }
-
-  const Del = () => {
-    return (<button className="remove" onClick={() => removeProduct(id)}>
-      <img src={deleteForever} alt="delete" />
-    </button>);
   }
 
   return (
