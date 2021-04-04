@@ -5,7 +5,6 @@ import useInput from '../hooks/useInput';
 import add from '../assets/icons/add_black_24dp.svg';
 import remove from '../assets/icons/remove_black_24dp.svg';
 import deleteForever from '../assets/icons/delete_forever_black_24dp.svg';
-
 import './ProductModifier.scss';
 
 function ProductModifier ({ product, amount, removeItemButton }) {
@@ -14,6 +13,7 @@ function ProductModifier ({ product, amount, removeItemButton }) {
   const price = product?.price;
   const currency = product?.currency;
   const { setValue, bind } = useInput(id, amount);
+  const hasDeleteButton = removeItemButton && amount > 1;
 
   // Update the input value when the redux store is updated
   useEffect(()=> {
@@ -32,36 +32,37 @@ function ProductModifier ({ product, amount, removeItemButton }) {
     dispatch(deleteItem(id));
   }
 
-  function RemoveItemButton() {
-    if (removeItemButton && amount > 1) {
-      return (
-        <button className="remove" onClick={() => removeProduct(id)}>
-          <img src={deleteForever} alt="delete" />
-        </button>
-      );
-    }
-
-    return false;
+  const Del = () => {
+    return (<button className="remove" onClick={() => removeProduct(id)}>
+      <img src={deleteForever} alt="delete" />
+    </button>);
   }
 
   return (
-    <div className="product-amount">
-      <button className="decrement" onClick={() => decrenmentProduct(id)}>
-        {amount > 1
-          ? <img src={remove} alt="remove" />
-          : <img src={deleteForever} alt="delete" />
-        }
-      </button>
+    <div className={`product-amount ${hasDeleteButton ? 'has-delete-button' : ''}`}>
+      {amount < 2 &&
+        <button className="remove" onClick={() => removeProduct(id)}>
+          <img src={deleteForever} alt="delete" />
+        </button>}
+
+      {amount > 1 &&
+        <button className="decrement" onClick={() => decrenmentProduct(id)}>
+          <img src={remove} alt="minus" />
+        </button>}
 
       <input type="number" {...bind} />
 
       <button className="increment" onClick={() => incrementProduct(id)}>
         <img src={add} alt="plus" />
       </button>
-      <span className="equals">=</span>
-      <span class="product-total">{price * amount} {currency}</span>
 
-      <RemoveItemButton />
+      {hasDeleteButton &&
+        <button className="remove" onClick={() => removeProduct(id)}>
+          <img src={deleteForever} alt="delete" />
+        </button>}
+
+      <span className="equals">=</span>
+      <span className="product-total">{price * amount} {currency}</span>
     </div>
   );
 }

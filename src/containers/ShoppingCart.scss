@@ -1,0 +1,28 @@
+@import '../styles/variables.scss';
+
+.shopping-cart-component {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+  justify-content: center;
+
+  .equals {
+    display: none;
+  }
+
+  .price {
+    display: grid;
+    grid-template-areas: "price total";
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-total {
+    display: none;
+  }
+}
+
+.delete-cart {
+  justify-self: end;
+}

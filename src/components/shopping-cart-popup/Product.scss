@@ -36,16 +36,6 @@
   }
 
   .product-amount {
-    display: grid;
     grid-area: price;
-    grid-template-areas: "decrement amount increment equals product-total";
-    grid-template-columns: max-content max-content max-content 1fr max-content;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-
-  .product-total {
-    justify-self: end;
   }
 }

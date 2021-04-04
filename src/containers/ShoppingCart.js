@@ -25,8 +25,8 @@ function ShoppingCart() {
   }
 
   return (
-    <div className="shopping-cart">
-      <button className="add-to-cart" onClick={emptyCart}>Clear cart</button>
+    <div className="shopping-cart-component">
+      <button className="delete-cart" onClick={emptyCart}>Clear cart</button>
 
       {Object.entries(cartState).map(([itemId, amount]) => {
         const product = products.find(product => product.id === itemId);
@@ -34,7 +34,6 @@ function ShoppingCart() {
         return (
           <Product key={product.id} product={product}>
             <ProductModifier product={product} amount={amount} removeItemButton={true} />
-            <span class="product-total">= {product?.price * amount} {product?.currency}</span>
           </Product>
         );
       })}

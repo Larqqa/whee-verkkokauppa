@@ -3,11 +3,17 @@
 
 .product-amount {
   display: grid;
-  grid-template-columns: max-content 1fr 1fr 1fr;
+  grid-template-areas: "decrement amount increment equals product-total";
+  grid-template-columns: max-content max-content max-content 1fr max-content;
   justify-content: center;
   align-items: center;
   align-content: center;
-  text-align: center;
+  width: 100%;
+
+  &.has-delete-button {
+    grid-template-areas: "decrement amount increment remove equals product-total";
+    grid-template-columns: max-content max-content max-content max-content 1fr max-content;
+  }
 
   input {
     display: block;
@@ -38,5 +44,13 @@
     img {
       pointer-events: none;
     }
+  }
+
+  .equals {
+    text-align: center;
+  }
+
+  .product-total {
+    justify-self: end;
   }
 }

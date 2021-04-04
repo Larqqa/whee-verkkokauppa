@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import Product from './Product';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import cart from '../../assets/icons/shopping_cart_white_24dp.svg';
+import close from '../../assets/icons/clear_black_24dp.svg';
 import './ShoppingCartPopUp.scss';
 
 function ShoppingCartPopUp () {
@@ -45,6 +46,9 @@ function ShoppingCartPopUp () {
 
       <div className={`cart-items ${popUp ? 'show' : 'hide'}`} ref={popUpRef}>
         <div className="cart-wrapper">
+          <button className="close-popup" onClick={toggleCartPopUp} >
+            <img src={close} alt="close" />
+          </button>
           {!Object.keys(cartState).length
           ? <p>Your cart is empty</p>
           : <>
