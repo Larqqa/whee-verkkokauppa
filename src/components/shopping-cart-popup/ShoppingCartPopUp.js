@@ -27,8 +27,10 @@ function ShoppingCartPopUp () {
 
   function GetCartAmount() {
     if (cartState && Object.keys(cartState).length) {
-      const total = Object.values(cartState).reduce((sum, value) => sum + value);
-      return `${total} items in cart`;
+      // const total = Object.values(cartState).reduce((sum, value) => sum + value);
+      const total = Object.keys(cartState).length;
+      const cartText = `${total === 1 ? 'item' : 'items'} in cart`;
+      return `${total} ${cartText}`;
     }
 
     return 'No items in cart';
@@ -43,8 +45,10 @@ function ShoppingCartPopUp () {
 
       <div className={`cart-items ${popUp ? 'show' : 'hide'}`} ref={popUpRef}>
         <div className="cart-wrapper">
-          <Link to="/ostoskori" onClick={hideCartPopUp} className="go-to-cart">Go to cart</Link>
-          {Object.entries(cartState).map(([itemId, amount]) => {
+          {!Object.keys(cartState).length
+          ? <p>Your cart is empty</p>
+          : <>
+            {Object.entries(cartState).map(([itemId, amount]) => {
               const product = products.find(product => product.id === itemId);
               totalPrice += product.price * amount;
               currency = product.currency;
@@ -53,7 +57,12 @@ function ShoppingCartPopUp () {
                 <Product key={product.id} product={product} amount={amount} />
               );
             })}
-          <p>Total price: {totalPrice} {currency}</p>
+            <div className="check-out">
+              <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">Check out</Link>
+              <p className="total-price">Total price: {totalPrice} {currency}</p>
+            </div>
+            </>
+          }
         </div>
       </div>
     </div>

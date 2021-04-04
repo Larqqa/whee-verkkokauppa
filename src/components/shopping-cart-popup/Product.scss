@@ -5,23 +5,47 @@
   padding: $main-padding 0;
   display: grid;
   grid-template-areas:
-    "product"
-    "price";
+    "image product"
+    "image price";
+  grid-template-columns: 1fr 2fr;
   align-items: center;
-}
 
-.product-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-
-  img {
-    width: 30px;
+  .product-image {
+    grid-area: image;
+    width: 100%;
+    padding-right: $main-padding;
+    box-sizing: border-box;
   }
 
-  .product-price {
-    text-align: end;
+  .product-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    .product-name {
+      margin: 0;
+      text-align: left;
+      font-style: italic;
+    }
+
+    .product-price {
+      text-align: end;
+    }
+  }
+
+  .product-amount {
+    display: grid;
+    grid-area: price;
+    grid-template-areas: "decrement amount increment equals product-total";
+    grid-template-columns: max-content max-content max-content 1fr max-content;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .product-total {
+    justify-self: end;
   }
 }

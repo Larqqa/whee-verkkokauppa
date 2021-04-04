@@ -58,8 +58,8 @@ function ProductModifier ({ product, amount, removeItemButton }) {
       <button className="increment" onClick={() => incrementProduct(id)}>
         <img src={add} alt="plus" />
       </button>
-
-      <span className="product-price">= {price * amount} {currency}</span>
+      <span className="equals">=</span>
+      <span class="product-total">{price * amount} {currency}</span>
 
       <RemoveItemButton />
     </div>

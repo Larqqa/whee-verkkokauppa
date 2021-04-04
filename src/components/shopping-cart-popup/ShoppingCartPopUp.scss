@@ -3,14 +3,10 @@
 
 .shopping-cart-button {
   display: grid;
-	grid-template-areas:
-    "info cart-icon"
-    "cart-items cart-items";
+	grid-template-areas: "info cart-icon";
   grid-template-columns: max-content 1fr;
-  grid-template-rows: 100% 100%;
   justify-content: space-between;
   align-items: center;
-  align-content: center;
   height: 100%;
   position: relative;
 
@@ -72,6 +68,10 @@
 .cart-items {
   position: relative;
   grid-column: 2;
+  margin-top: 30px;
+  position: absolute;
+  right: 0;
+  top: 100%;
 
   &.hide {
     display: none;
@@ -122,4 +122,19 @@
   box-shadow: $bordering-shadow;
   max-height: 400px;
   overflow-y: auto;
+}
+
+.check-out {
+  display: grid;
+	grid-template-areas: "check-out-link total-price";
+  grid-template-columns: 1fr max-content;
+  justify-content: center ;
+  align-items: center;
+
+  .check-out-link {
+  }
+
+  .total-price {
+    text-align: right;
+  }
 }

@@ -23,6 +23,7 @@ button {
 	height: fit-content;
 	width: fit-content;
 	padding: $small-padding $main-padding;
+  // background-color: $background-color;
   background-color: transparent;
 	font-size: $button-size;
 	font-weight: bold;
@@ -33,6 +34,7 @@ button {
 	cursor: pointer;
 
   &:active {
+    transform: translateY(0px);
     transition: none;
     background-color: $success-color;
   }

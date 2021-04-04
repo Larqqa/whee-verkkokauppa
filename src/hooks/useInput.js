@@ -14,7 +14,7 @@ function useInput(id, initialValue) {
     // but don't update the cart state to it
     if (isNaN(amount)) {
       setValue(event.target.value);
-    } else {
+    } else if (amount < 1000) {
       setValue(amount);
       dispatch(setItem({
         "id": id,

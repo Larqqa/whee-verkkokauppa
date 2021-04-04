@@ -18,7 +18,7 @@ function ShoppingCart() {
   if (!cartState || Object.keys(cartState).length === 0) {
     return (
       <div className="shopping-cart">
-        <h2>No items in cart.</h2>
+        <h2>Your cart is empty.</h2>
         <Link to="/">Back to shop</Link>
       </div>
     );
@@ -34,6 +34,7 @@ function ShoppingCart() {
         return (
           <Product key={product.id} product={product}>
             <ProductModifier product={product} amount={amount} removeItemButton={true} />
+            <span class="product-total">= {product?.price * amount} {product?.currency}</span>
           </Product>
         );
       })}
