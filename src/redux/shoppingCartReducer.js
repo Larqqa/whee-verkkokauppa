@@ -32,7 +32,7 @@ export const ShoppingCart = createSlice({
           cartStorage.set({});
         }
 
-        console.log(cart);
+        // console.log(cart);
         return cart;
       }
       catch(e) {
