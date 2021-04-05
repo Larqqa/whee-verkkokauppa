@@ -7,6 +7,7 @@ import './Shop.scss';
 
 function Shop() {
   const dispatch = useDispatch()
+
   function addProductToCart(id) {
     dispatch(addItem(id));
   }

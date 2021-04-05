@@ -2,7 +2,7 @@
 @import '../../styles/mixins.scss';
 
 .cart-product {
-  padding: $main-padding 0;
+  margin: $main-padding 0;
   display: grid;
   grid-template-areas:
     "image product"
@@ -10,32 +10,59 @@
   grid-template-columns: 1fr 2fr;
   align-items: center;
 
+  @media screen and (max-width: $small-mobile-width) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  @media screen and (max-width: $tiny-mobile-width) {
+    grid-template-columns: max-content 2fr;
+  }
+
   .product-image {
     grid-area: image;
-    width: 100%;
-    padding-right: $main-padding;
-    box-sizing: border-box;
+    margin: 0;
+    margin-right: $main-padding;
+
+    img {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100px;
+      justify-self: center;
+
+      @media screen and (max-width: $tiny-mobile-width) {
+        max-width: 50px;
+      }
+    }
   }
 
   .product-info {
     display: grid;
+    grid-template-areas:
+      "name price"
+      "amount amount";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    row-gap: $small-padding;
     justify-content: center;
     align-items: center;
     align-content: center;
 
     .product-name {
+      grid-area: name;
       margin: 0;
       text-align: left;
       font-style: italic;
+      font-size: 120%;
     }
 
     .product-price {
+      grid-area: price;
       text-align: end;
+      font-size: 110%;
     }
-  }
 
-  .product-amount {
-    grid-area: price;
+    .product-amount {
+      grid-area: amount;
+    }
   }
 }

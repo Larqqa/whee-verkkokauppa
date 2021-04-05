@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function useOutsideClick(ref, callback, value) {
+function useScrollOverBottomDetector(ref, callback, value) {
   useEffect(() => {
     function scrollPastElement() {
       if (ref.current && ref.current.getBoundingClientRect().bottom < 0) {
@@ -19,4 +19,4 @@ function useOutsideClick(ref, callback, value) {
   }, [ref, callback, value]);
 }
 
-export default useOutsideClick;
+export default useScrollOverBottomDetector;

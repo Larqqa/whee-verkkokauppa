@@ -8,6 +8,7 @@ import './App.scss';
 function App() {
   const dispatch = useDispatch();
 
+  // Initialize the cart from sessionStorage when the app is loaded
   useEffect(() => {
     dispatch(initCart());
   }, [dispatch])

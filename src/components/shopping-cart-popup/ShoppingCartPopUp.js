@@ -39,34 +39,40 @@ function ShoppingCartPopUp () {
   return (
     <div className="shopping-cart-button">
       <p className="cart-info"><GetCartAmount /></p>
-      <button className="cart-icon" onClick={toggleCartPopUp} ref={popUpButtonRef}>
-        <img src={cart} alt="cart" />
+
+      <button className="cart-icon" onClick={toggleCartPopUp} ref={popUpButtonRef} aria-haspopup="true" aria-expanded={popUp}>
+        <img src={cart} alt="cart" aria-hidden="true" focusable="false" />
+        <span className="visually-hidden">Toggle cart pop up</span>
       </button>
 
-      <div className={`cart-items ${popUp ? 'show' : 'hide'}`} ref={popUpRef}>
+      <aside className={`cart-items ${popUp ? 'show' : 'hide'}`} ref={popUpRef}>
         <div className="cart-wrapper">
           <button className="close-popup" onClick={toggleCartPopUp} >
-            <img src={close} alt="close" />
+            <img src={close} alt="close" aria-hidden="true" focusable="false" />
+            <span className="visually-hidden">Close cart pop up</span>
           </button>
-          {!Object.keys(cartState).length
-          ? <p>Your cart is empty</p>
-          : <>
-            {Object.entries(cartState).map(([itemId, amount]) => {
-              const product = getProductById(itemId);
-              totalPrice += product.price * amount;
 
-              return (
-                <CartProduct key={product.id} product={product} amount={amount} />
-              );
-            })}
-            <div className="check-out">
-              <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">View cart</Link>
-              <p className="total-price">Total price: {formatPrice(totalPrice)}</p>
-            </div>
+          {!Object.keys(cartState).length ?
+            <p>Your cart is empty</p>
+          :
+            <>
+              {Object.entries(cartState).map(([itemId, amount]) => {
+                const product = getProductById(itemId);
+                totalPrice += product.price * amount;
+
+                return (
+                  <CartProduct key={product.id} product={product} amount={amount} />
+                );
+              })}
+
+              <div className="check-out">
+                <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">View cart</Link>
+                <p className="total-price">Total: {formatPrice(totalPrice)}</p>
+              </div>
             </>
           }
         </div>
-      </div>
+      </aside>
     </div>
   );
 

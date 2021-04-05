@@ -7,16 +7,18 @@ function CartProduct({ product, amount }) {
   const image = product?.image;
   const name = product?.name;
   const price = product?.price;
-  const currency = product?.currency;
 
   return (
     <div className="cart-product">
-      <img src={image} className="product-image" alt={name} />
+      <figure className="product-image">
+        <img src={image} alt={name} />
+      </figure>
+
       <div className="product-info">
         <p className="product-name"><strong>{name}</strong></p>
         <span className="product-price">{formatPrice(price)}</span>
+        <ProductModifier product={product} amount={amount} />
       </div>
-      <ProductModifier product={product} amount={amount} />
     </div>
   );
 

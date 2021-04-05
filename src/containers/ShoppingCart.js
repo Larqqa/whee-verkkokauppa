@@ -28,6 +28,7 @@ function ShoppingCart() {
   return (
     <div className="shopping-cart-component">
       <button className="delete-cart" onClick={emptyCart}>Clear cart</button>
+
       <div className="product-wrapper">
         {Object.entries(cartState).map(([itemId, amount]) => {
           const product = getProductById(itemId);
@@ -39,6 +40,7 @@ function ShoppingCart() {
             </Product>
           );
         })}
+
         <p className="total-price"><span>Total Price:</span> {formatPrice(totalPrice)}</p>
       </div>
     </div>

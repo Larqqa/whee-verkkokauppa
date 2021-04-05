@@ -23,3 +23,25 @@
   @include material-hover($transition);
   box-shadow: none !important;
 }
+
+@mixin button-style() {
+  @include material-box-hover(background-color $transition-length ease-in-out);
+
+	height: fit-content;
+	width: fit-content;
+	padding: $small-padding $main-padding;
+  background-color: transparent;
+	font-size: $button-size;
+	font-weight: bold;
+	text-transform: uppercase;
+  outline: none;
+	box-shadow: none;
+	border: 1px solid $font-color;
+	cursor: pointer;
+
+  &:active {
+    transform: translateY(0px);
+    transition: none;
+    background-color: $success-color;
+  }
+}

@@ -12,8 +12,9 @@ function ProductModifier ({ product, amount, removeItemButton }) {
   const dispatch = useDispatch();
   const id = product?.id;
   const price = product?.price;
-  const { setValue, bind } = useSetOnInput(id, amount);
   const hasDeleteButton = removeItemButton && amount > 1;
+
+  const { setValue, bind } = useSetOnInput(id, amount);
 
   // Update the input value when the redux store is updated
   useEffect(()=> {
@@ -37,22 +38,25 @@ function ProductModifier ({ product, amount, removeItemButton }) {
       <div className={`product-modifiers ${hasDeleteButton ? 'has-delete-button' : ''}`}>
         {(hasDeleteButton || amount < 2) &&
           <button className="remove" onClick={() => removeProduct(id)}>
-            <img src={deleteForever} alt="delete" />
+            <img src={deleteForever} alt="remove" aria-hidden="true" focusable="false" />
+            <span className="visually-hidden">Remove product from cart</span>
           </button>}
 
         {amount > 1 &&
           <button className="decrement" onClick={() => decrenmentProduct(id)}>
-            <img src={remove} alt="minus" />
+            <img src={remove} alt="decrement" aria-hidden="true" focusable="false" />
+            <span className="visually-hidden">Decrement product amount</span>
           </button>}
 
         <input type="number" {...bind} />
 
         <button className="increment" onClick={() => incrementProduct(id)}>
-          <img src={add} alt="plus" />
+          <img src={add} alt="increment" aria-hidden="true" focusable="false" />
+          <span className="visually-hidden">Increment product amount</span>
         </button>
       </div>
 
-      <span className="equals">=</span>
+      <span className="equals" aria-hidden="true">=</span>
       <span className="product-total">{formatPrice(price * amount)}</span>
     </div>
   );

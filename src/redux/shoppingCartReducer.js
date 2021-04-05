@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+/**
+ * Helper object for handling the sessionStorage cart
+ */
 const cartStorage = {
   get: () => {
     const storage = sessionStorage.getItem('whee-cart');
@@ -33,13 +36,13 @@ export const ShoppingCart = createSlice({
         return cart;
       }
       catch(e) {
-        return console.error(e);
+        throw new Error(e);
       }
-
     },
     addItem: (state, action) => {
       const cart = cartStorage.get();
       const productId = action?.payload;
+
       if(!productId) return;
       if (cart[productId] >= 999) return;
 
@@ -55,6 +58,7 @@ export const ShoppingCart = createSlice({
     removeItem: (state, action) => {
       const cart = cartStorage.get();
       const productId = action?.payload;
+
       if(!productId) return;
 
       if (cart[productId] > 1) {
@@ -70,6 +74,7 @@ export const ShoppingCart = createSlice({
       const cart = cartStorage.get();
       const productId = action?.payload?.id;
       const amount = action?.payload?.amount;
+
       if(!productId || amount === undefined) return;
       if (amount > 999) return;
 
@@ -85,6 +90,7 @@ export const ShoppingCart = createSlice({
     deleteItem: (state, action) => {
       const cart = cartStorage.get();
       const productId = action?.payload;
+
       if(!productId) return;
 
       if(cart[productId] !== null) {

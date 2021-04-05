@@ -12,7 +12,7 @@
 
   justify-self: end;
 
-  @media screen and (max-width: $main-tablet-width) {
+  @media screen and (max-width: $large-mobile-width) {
   	grid-template-areas:
       "cart-icon"
       "info";
@@ -25,11 +25,11 @@
   grid-area: info;
   font-style: italic;
 
-  @media screen and (min-width: $main-tablet-width) {
+  @media screen and (min-width: $large-mobile-width) {
     margin-right: $large-padding;
   }
 
-  @media screen and (max-width: $main-tablet-width) {
+  @media screen and (max-width: $large-mobile-width) {
     align-self: start;
   }
 }
@@ -53,6 +53,7 @@
   align-items: center;
   align-content: center;
   justify-content: center;
+  justify-self: end;
 
   &:active {
     transition: none;
@@ -66,6 +67,8 @@
 }
 
 .cart-items {
+  display: flex;
+  justify-content: flex-end;
   position: relative;
   grid-column: 2;
   margin-top: 30px;
@@ -78,7 +81,11 @@
     display: none;
   }
 
-  @media screen and (min-width: $large-mobile-width) {
+  @media screen and (max-width: $large-tablet-width) {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: $large-tablet-width) {
     &:before {
       content: "";
       display: block;
@@ -110,12 +117,18 @@
     }
   }
 
-  @media screen and (max-width: $large-mobile-width) {
+  @media screen and (max-width: $large-tablet-width) {
     position: fixed;
     grid-area: unset;
     margin: 0;
     top: 0;
-    left: 0;
+    right: 0;
+    width: fit-content;
+  }
+
+  @media screen and (max-width: $small-mobile-width) {
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -127,21 +140,21 @@
   width: 100vw;
   max-width: 350px;
   max-height: 500px;
-  padding: $main-padding $large-padding;
+  padding: $main-padding;
   background-color: $header-color;
   box-shadow: $bordering-shadow;
   transform: translateY(100%);
   overflow-y: auto;
   z-index: 1000;
 
-  @media screen and (max-width: $large-mobile-width) {
+  @media screen and (max-width: $large-tablet-width) {
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
     transform: none;
-    width: auto;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 100vh;
     box-sizing: border-box;
   }
 }
@@ -154,21 +167,8 @@
   width: 45px;
   height: 45px;
 
-  @media screen and (min-width: $large-mobile-width) {
+  @media screen and (min-width: $large-tablet-width) {
     display: none;
-  }
-}
-
-.cart-product {
-  grid-template-columns: 50% 50%;
-
-  @media screen and (max-width: $small-mobile-width) {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  img {
-    max-width: 150px;
-    justify-self: center;
   }
 }
 
@@ -178,8 +178,15 @@
   grid-template-columns: 1fr max-content;
   justify-content: center ;
   align-items: center;
+  margin-top: $main-padding;
 
   .check-out-link {
+    @include button-style;
+
+    color: $font-color !important;
+    line-height: normal;
+    font-size: $main-size;
+    text-decoration: none;
   }
 
   .total-price {

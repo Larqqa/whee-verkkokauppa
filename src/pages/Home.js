@@ -4,9 +4,9 @@ import './Home.scss';
 
 function Home() {
   return (
-    <div className="home">
+    <main className="home">
       <Shop />
-    </div>
+    </main>
   );
 }
 

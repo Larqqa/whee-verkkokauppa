@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setItem } from '../redux/shoppingCartReducer';
 
 function useSetOnInput(id, initialValue) {
-  const [value, setValue] = useState(initialValue);
+  const [ value, setValue ] = useState(initialValue);
   const dispatch = useDispatch();
 
   function setItemAmount(event) {

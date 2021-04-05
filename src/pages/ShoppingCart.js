@@ -4,9 +4,9 @@ import './ShoppingCart.scss';
 
 function ShoppingCart() {
   return (
-    <div className="shopping-cart">
+    <main className="shopping-cart">
       <ShoppingCartComponent />
-    </div>
+    </main>
   );
 }
 

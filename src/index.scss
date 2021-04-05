@@ -3,38 +3,41 @@
 @import './styles/mixins.scss';
 @import 'normalize.css';
 
+// --- Global style definitions ---
+
 html {
   font-size: 10px;
   line-height: 1.6;
 
-  @media screen and (max-width: $main-mobile-width) {
+  @media screen and (max-width: $main-tablet-width) {
     font-size: 9px;
+  }
+
+  @media screen and (max-width: $main-mobile-width) {
+    font-size: 8px;
   }
 }
 
 p, a, div, span, button, li {
   font-family: $main-font;
   font-size: $main-size;
+
+  @media screen and (max-width: $main-mobile-width) {
+    font-size: $button-size;
+  }
 }
 
 button {
-  @include material-box-hover(background-color $transition-length ease-in-out);
+  @include button-style;
+}
 
-	height: fit-content;
-	width: fit-content;
-	padding: $small-padding $main-padding;
-  background-color: transparent;
-	font-size: $button-size;
-	font-weight: bold;
-	text-transform: uppercase;
-  outline: none;
-	box-shadow: none;
-	border: 1px solid $font-color;
-	cursor: pointer;
-
-  &:active {
-    transform: translateY(0px);
-    transition: none;
-    background-color: $success-color;
-  }
+// Utility class to hide text for screen readers only
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

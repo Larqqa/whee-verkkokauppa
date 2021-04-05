@@ -19,54 +19,14 @@
     }
   }
 
-  .product {
-    @media screen and (max-width: $main-mobile-width) {
-      grid-template-columns: 100%;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "image"
-        "data";
-    }
-  }
-
-  .product-data {
-    @media screen and (max-width: $main-tablet-width) {
-      grid-template-columns: 3fr 2.5fr;
-      grid-template-areas: "description price";
-    }
-
-    @media screen and (max-width: $tiny-mobile-width) {
-      grid-template-columns: 100%;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "description"
-        "price";
-    }
-  }
-
   .price-wrapper {
-    grid-template-rows: auto;
-    grid-template-areas:
-      "price"
-      "amount";
-    width: 100%;
-    box-sizing: border-box;
-
     @media screen and (max-width: $main-tablet-width) {
-      grid-template-columns: auto;
       grid-gap: $small-padding 0;
     }
 
     .price {
-      grid-area: price;
-
     	@media screen and (max-width: $main-tablet-width) {
         margin: 0;
-        justify-self: end;
-      }
-
-    	@media screen and (max-width: $tiny-mobile-width) {
-        justify-self: center;
       }
     }
 

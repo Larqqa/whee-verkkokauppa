@@ -38,6 +38,7 @@
 	}
 
   a {
+    width: fit-content;
     text-decoration: none;
   }
 
@@ -89,16 +90,7 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-  top: -100%;
-  transition: top .2s ease-in-out;
-
-  &.show {
-    top: 0;
-  }
-
-  &.hide {
-    display: none;
-  }
+  top: 0;
 
   .header-wrapper {
     grid-template-columns: max-content 1fr;
@@ -107,6 +99,10 @@
 
   .logo {
     font-size: $small-header-size;
+  }
+
+  .slogan {
+    display: none;
   }
 
   .shopping-cart-button {
