@@ -12,23 +12,102 @@
     justify-self: end;
   }
 
+  .product-wrapper {
+    @media screen and (max-width: $main-tablet-width) {
+      width: fit-content;
+      margin: auto;
+    }
+  }
+
+  .product {
+    @media screen and (max-width: $main-mobile-width) {
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "image"
+        "data";
+    }
+  }
+
+  .product-data {
+    @media screen and (max-width: $main-tablet-width) {
+      grid-template-columns: 3fr 2.5fr;
+      grid-template-areas: "description price";
+    }
+
+    @media screen and (max-width: $tiny-mobile-width) {
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "description"
+        "price";
+    }
+  }
+
   .price-wrapper {
     grid-template-rows: auto;
     grid-template-areas:
       "price"
       "amount";
+    width: 100%;
+    box-sizing: border-box;
+
+    @media screen and (max-width: $main-tablet-width) {
+      grid-template-columns: auto;
+      grid-gap: $small-padding 0;
+    }
 
     .price {
       grid-area: price;
+
+    	@media screen and (max-width: $main-tablet-width) {
+        margin: 0;
+        justify-self: end;
+      }
+
+    	@media screen and (max-width: $tiny-mobile-width) {
+        justify-self: center;
+      }
     }
 
-    .amount {
-      grid-area: amount;
+    .product-amount {
+      grid-template-areas:
+        "modifiers modifiers"
+        "equals product-total";
+      grid-template-columns: 1fr max-content;
+
+      @media screen and (max-width: $tiny-mobile-width) {
+        grid-template-columns: auto auto;
+      }
     }
 
     .equals, .product-total {
       font-size: $subheading-size;
-      margin: 0;
+    }
+
+    .product-modifiers {
+      grid-area: modifiers;
+      justify-self: end;
+
+    	@media screen and (max-width: $tiny-mobile-width) {
+        justify-self: center;
+      }
+    }
+
+    .equals {
+      grid-area: equals;
+
+      @media screen and (max-width: $tiny-mobile-width) {
+        justify-self: center;
+      }
+    }
+
+    .product-total {
+      grid-area: product-total;
+
+      @media screen and (max-width: $tiny-mobile-width) {
+        justify-self: center;
+      }
     }
   }
 
@@ -36,6 +115,19 @@
     padding: $main-padding;
     text-align: right;
     font-size: $subheading-size;
-    font-style: italic;
+
+    span {
+      text-align: right;
+      font-size: $subheading-size;
+      font-style: italic;
+    }
+
+  	@media screen and (max-width: $main-tablet-width) {
+      padding: $small-padding;
+    }
+
+    @media screen and (max-width: $tiny-mobile-width) {
+      text-align: center;
+    }
   }
 }

@@ -71,7 +71,7 @@ export const ShoppingCart = createSlice({
       const productId = action?.payload?.id;
       const amount = action?.payload?.amount;
       if(!productId || amount === undefined) return;
-      if (amount >= 999) return;
+      if (amount > 999) return;
 
       if (amount < 1) {
         delete cart[productId];

@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPrice } from '../../services/shopInfo';
 import ProductModifier from '../ProductModifier';
 import './CartProduct.scss';
 
@@ -13,7 +14,7 @@ function CartProduct({ product, amount }) {
       <img src={image} className="product-image" alt={name} />
       <div className="product-info">
         <p className="product-name"><strong>{name}</strong></p>
-        <span className="product-price">{price} {currency}</span>
+        <span className="product-price">{formatPrice(price)}</span>
       </div>
       <ProductModifier product={product} amount={amount} />
     </div>

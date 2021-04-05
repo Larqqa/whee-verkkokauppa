@@ -125,9 +125,9 @@
   right: 0;
   bottom: 0;
   width: 100vw;
-  max-width: 300px;
+  max-width: 350px;
   max-height: 500px;
-  padding: $main-padding;
+  padding: $main-padding $large-padding;
   background-color: $header-color;
   box-shadow: $bordering-shadow;
   transform: translateY(100%);
@@ -141,7 +141,6 @@
     transform: none;
     width: auto;
     max-width: 100%;
-    // max-height: 50vh;
     max-height: 100%;
     box-sizing: border-box;
   }
@@ -157,6 +156,19 @@
 
   @media screen and (min-width: $large-mobile-width) {
     display: none;
+  }
+}
+
+.cart-product {
+  grid-template-columns: 50% 50%;
+
+  @media screen and (max-width: $small-mobile-width) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  img {
+    max-width: 150px;
+    justify-self: center;
   }
 }
 

@@ -3,17 +3,12 @@
 
 .product-amount {
   display: grid;
-  grid-template-areas: "decrement amount increment equals product-total";
-  grid-template-columns: max-content max-content max-content 1fr max-content;
+  grid-template-areas: "modifiers equals product-total";
+  grid-template-columns: max-content 1fr max-content;
   justify-content: center;
   align-items: center;
   align-content: center;
   width: 100%;
-
-  &.has-delete-button {
-    grid-template-areas: "decrement amount increment remove equals product-total";
-    grid-template-columns: max-content max-content max-content max-content 1fr max-content;
-  }
 
   input {
     display: block;
@@ -47,23 +42,33 @@
     img {
       pointer-events: none;
     }
+  }
 
-    &:first-child {
-      margin: 0;
+  .product-modifiers {
+    display: grid;
+    grid-template-areas: "decrement amount increment";
+    grid-template-columns: max-content max-content max-content;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    &.has-delete-button {
+      grid-template-areas: "remove decrement amount increment";
+      grid-template-columns: max-content max-content max-content max-content;
     }
   }
 
-  input {
-    margin: 0 $tiny-padding;
+  .remove, .decrement {
+    margin-right: $tiny-padding;
   }
 
-  .remove {
+  .increment {
     margin-left: $tiny-padding;
   }
 
-
   .equals {
-    text-align: center;
+    text-align: end;
+    margin: 0 $tiny-padding;
   }
 
   .product-total {

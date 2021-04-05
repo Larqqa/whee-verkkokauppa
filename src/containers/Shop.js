@@ -1,20 +1,19 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addItem } from '../redux/shoppingCartReducer';
+import { getProducts } from '../services/shopInfo';
 import Product from '../components/Product';
 import './Shop.scss';
 
 function Shop() {
   const dispatch = useDispatch()
-  const products = useSelector((state) => state.Products)
-
   function addProductToCart(id) {
     dispatch(addItem(id));
   }
 
   return (
     <div className="shop">
-      {products.map( product =>
+      {getProducts().map( product =>
         <Product key={product.id} product={product}>
           <button className="add-to-cart" onClick={() => addProductToCart(product.id)}>Add to cart</button>
         </Product>)}

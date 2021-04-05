@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import CartProduct from './CartProduct';
+import { formatPrice, getProductById } from '../../services/shopInfo';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import cart from '../../assets/icons/shopping_cart_white_24dp.svg';
 import close from '../../assets/icons/clear_black_24dp.svg';
@@ -10,11 +11,9 @@ import './ShoppingCartPopUp.scss';
 function ShoppingCartPopUp () {
   const [ popUp, setPopUp ] = useState(false);
   const cartState = useSelector((state) => state.ShoppingCart);
-  const products = useSelector((state) => state.Products);
   const popUpRef = useRef(null);
   const popUpButtonRef = useRef(null);
   let totalPrice = 0;
-  let currency;
 
   useOutsideClick([popUpRef, popUpButtonRef], setPopUp, false);
 
@@ -53,9 +52,8 @@ function ShoppingCartPopUp () {
           ? <p>Your cart is empty</p>
           : <>
             {Object.entries(cartState).map(([itemId, amount]) => {
-              const product = products.find(product => product.id === itemId);
+              const product = getProductById(itemId);
               totalPrice += product.price * amount;
-              currency = product.currency;
 
               return (
                 <CartProduct key={product.id} product={product} amount={amount} />
@@ -63,7 +61,7 @@ function ShoppingCartPopUp () {
             })}
             <div className="check-out">
               <Link to="/ostoskori" onClick={hideCartPopUp} className="check-out-link">View cart</Link>
-              <p className="total-price">Total price: {totalPrice} {currency}</p>
+              <p className="total-price">Total price: {formatPrice(totalPrice)}</p>
             </div>
             </>
           }

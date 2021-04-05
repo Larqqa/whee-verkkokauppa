@@ -1,26 +1,27 @@
-[
-  {
-    "id": "30954d90085f6eaaf5817917fc5fecb3",
-    "image": "/images/circle.png",
-    "name": "Circle",
-    "description": "Perfect choice when\nyou don't need any corners.",
-    "price": 999,
-    "currency": "€"
-  },
-  {
-    "id": "ce9291906a4c3b042650b70d7f3b152e",
-    "image": "/images/rectangle.png",
-    "name": "Rectangle",
-    "description": "For once, it's a great\nidea to think inside the box",
-    "price": 899,
-    "currency": "€"
-  },
-  {
-    "id": "5e5500cb2b82eb72d550de644bd1b64b",
-    "image": "/images/triangle.png",
-    "name": "Triangle",
-    "description": "A true classic with\nthree elegant corners.",
-    "price": 1009,
-    "currency": "€"
-  }
-]
+{
+  "language": "fi-FI",
+  "currency": "EUR",
+  "products": [
+    {
+      "id": "30954d90085f6eaaf5817917fc5fecb3",
+      "image": "/images/circle.png",
+      "name": "Circle",
+      "description": "Perfect choice when\nyou don't need any corners.",
+      "price": 999.50
+    },
+    {
+      "id": "ce9291906a4c3b042650b70d7f3b152e",
+      "image": "/images/rectangle.png",
+      "name": "Rectangle",
+      "description": "For once, it's a great\nidea to think inside the box",
+      "price": 899
+    },
+    {
+      "id": "5e5500cb2b82eb72d550de644bd1b64b",
+      "image": "/images/triangle.png",
+      "name": "Triangle",
+      "description": "A true classic with\nthree elegant corners.",
+      "price": 1009
+    }
+  ]
+}

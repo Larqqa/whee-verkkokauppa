@@ -11,10 +11,10 @@
 
 	@media screen and (max-width: $main-tablet-width) {
 		width: auto;
-		padding: $main-padding 0;
+		margin: $large-padding 0;
 	}
 
-	@media screen and (max-width: $main-mobile-width) {
+	@media screen and (max-width: $small-mobile-width) {
 		grid-template-columns: 100%;
 		grid-template-rows: auto auto;
 		grid-template-areas:
@@ -30,12 +30,12 @@
 	padding: $main-padding;
 
 	@media screen and (max-width: $main-mobile-width) {
-		padding: $small-padding;
+		padding: 0;
 	}
 
 	img {
 		width: 100%;
-		height: 100%;
+		// height: 100%;
 
 		@media screen and (max-width: $main-mobile-width) {
 			width: auto;
@@ -45,10 +45,10 @@
 
 .product-data {
 	display: grid;
-	grid-template-columns: 3fr 2fr;
+	grid-template-columns: 3fr 2.5fr;
 	grid-template-areas: "description price";
 
-	@media screen and (max-width: $main-tablet-width) {
+	@media screen and (max-width: $tiny-mobile-width) {
 		grid-template-columns: 100%;
 		grid-template-rows: auto auto;
 		grid-template-areas:
@@ -95,7 +95,7 @@
 
 .price-wrapper {
 	display: grid;
-	grid-template-rows: 50% 50%;
+	grid-template-rows: auto auto;
 	grid-template-areas:
 		"price"
 		"cart-button";
@@ -111,12 +111,22 @@
 		justify-self: start;
 		justify-items: center;
 		align-items: center;
+		width: 100%;
 		padding: $small-padding;
+		box-sizing: border-box;
 	}
-
 
 	@media screen and (max-width: $main-mobile-width) {
 		justify-self: center;
+		grid-template-rows: auto auto;
+		grid-template-columns: auto;
+		grid-template-areas:
+			"price"
+			"cart-button";
+	}
+
+	@media screen and (max-width: $tiny-mobile-width) {
+		padding: 0;
 	}
 
 	.price {
@@ -125,13 +135,19 @@
 
 		@media screen and (max-width: $main-tablet-width) {
 			margin-right: $main-padding;
+			font-size: $subheading-size;
+		}
+
+		@media screen and (max-width: $main-mobile-width) {
+			margin: 0;
+			margin-bottom: $main-padding;
 		}
 	}
 
 	.add-to-cart {
-
 		@media screen and (max-width: $main-tablet-width) {
-			margin-left: $main-padding;
+			justify-self: center;
+			font-size: $main-size;
 		}
 	}
 }

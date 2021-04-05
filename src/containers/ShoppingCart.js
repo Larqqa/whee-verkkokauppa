@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteCart } from '../redux/shoppingCartReducer';
+import { formatPrice, getProductById } from '../services/shopInfo';
 import Product from '../components/Product';
 import ProductModifier from '../components/ProductModifier';
 import './ShoppingCart.scss';
@@ -9,9 +10,7 @@ import './ShoppingCart.scss';
 function ShoppingCart() {
   const dispatch = useDispatch()
   const cartState = useSelector((state) => state.ShoppingCart);
-  const products = useSelector((state) => state.Products)
-  let totalprice = 0;
-  let currency;
+  let totalPrice = 0;
 
   function emptyCart() {
     dispatch(deleteCart());
@@ -31,9 +30,8 @@ function ShoppingCart() {
       <button className="delete-cart" onClick={emptyCart}>Clear cart</button>
       <div className="product-wrapper">
         {Object.entries(cartState).map(([itemId, amount]) => {
-          const product = products.find(product => product.id === itemId);
-          totalprice += product.price * amount;
-          currency = product.currency;
+          const product = getProductById(itemId);
+          totalPrice += product.price * amount;
 
           return (
             <Product key={product.id} product={product}>
@@ -41,8 +39,8 @@ function ShoppingCart() {
             </Product>
           );
         })}
+        <p className="total-price"><span>Total Price:</span> {formatPrice(totalPrice)}</p>
       </div>
-      <p className="total-price">Total Price: {totalprice} {currency}</p>
     </div>
   );
 }

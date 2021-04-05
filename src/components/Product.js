@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPrice } from '../services/shopInfo';
 import './Product.scss';
 
 function Product ({ product, children}) {
@@ -6,7 +7,6 @@ function Product ({ product, children}) {
   const name = product?.name;
   const description = product?.description;
   const price = product?.price;
-  const currency = product?.currency;
 
   return (
     <div className="product">
@@ -19,7 +19,7 @@ function Product ({ product, children}) {
           <p className="description">{description}</p>
         </div>
         <div className="price-wrapper">
-          <span className="price">{price} {currency}</span>
+          <span className="price">{formatPrice(price)}</span>
           {children}
         </div>
       </div>
