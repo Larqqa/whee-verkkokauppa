@@ -12,7 +12,7 @@
 
   justify-self: end;
 
-  @media screen and (max-width: $large-mobile-width) {
+  @media screen and (max-width: $main-mobile-width) {
   	grid-template-areas:
       "cart-icon"
       "info";
@@ -25,11 +25,11 @@
   grid-area: info;
   font-style: italic;
 
-  @media screen and (min-width: $large-mobile-width) {
+  @media screen and (min-width: $main-mobile-width) {
     margin-right: $large-padding;
   }
 
-  @media screen and (max-width: $large-mobile-width) {
+  @media screen and (max-width: $main-mobile-width) {
     align-self: start;
   }
 }
@@ -81,11 +81,12 @@
     display: none;
   }
 
-  @media screen and (max-width: $large-tablet-width) {
+  @media screen and (max-width: $main-tablet-width),
+         screen and (max-height: $main-mobile-width) {
     margin-top: 0;
   }
 
-  @media screen and (min-width: $large-tablet-width) {
+  @media screen and (min-width: $main-mobile-width) {
     &:before {
       content: "";
       display: block;
@@ -117,7 +118,14 @@
     }
   }
 
-  @media screen and (max-width: $large-tablet-width) {
+  @media screen and (max-height: $main-mobile-width) {
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $main-mobile-width),
+         screen and (max-height: $main-mobile-width) {
     position: fixed;
     grid-area: unset;
     margin: 0;
@@ -147,7 +155,8 @@
   overflow-y: auto;
   z-index: 1000;
 
-  @media screen and (max-width: $large-tablet-width) {
+  @media screen and (max-width: $main-mobile-width),
+         screen and (max-height: $main-mobile-width) {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -166,9 +175,11 @@
   padding: $small-padding;
   width: 45px;
   height: 45px;
+  display: none;
 
-  @media screen and (min-width: $large-tablet-width) {
-    display: none;
+  @media screen and (max-width: $main-mobile-width),
+         screen and (max-height: $main-mobile-width) {
+    display: block;
   }
 }
 

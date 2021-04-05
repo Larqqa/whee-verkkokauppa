@@ -18,7 +18,7 @@ function ShoppingCart() {
 
   if (!cartState || Object.keys(cartState).length === 0) {
     return (
-      <div className="shopping-cart">
+      <div className="shopping-cart-component">
         <h2>Your cart is empty.</h2>
         <Link to="/">Back to shop</Link>
       </div>

@@ -1,4 +1,5 @@
 @import '../styles/variables.scss';
+@import '../styles/mixins.scss';
 
 .shopping-cart-component {
   max-width: 1000px;
@@ -7,6 +8,19 @@
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
   justify-content: center;
+
+  h2 {
+    font-size: $header-size;
+  }
+
+  a {
+    @include button-style;
+
+    color: $font-color !important;
+    line-height: normal;
+    font-size: $main-size;
+    text-decoration: none;
+  }
 
   .delete-cart {
     justify-self: end;
