@@ -14,13 +14,13 @@ Shopping cart functionalities include:
 
 The shopping cart state is persisted locally using JSON strings and [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
 
-The app is tested and working on Chrome, Edge, Firefox, and Android phone and tablet.
+The app is tested and working on Chrome, Edge, Firefox, and Android phone and tablet.\
+Considering the heavy use of modern CSS, like Grid for the layout, i don't expect this to work on Internet Explorer too well.
 
 ## To install the app
 
-First clone the repository with `git clone https://github.com/Larqqa/whee-verkkokauppa.git`
-
-Then in the cloned repository, install the project's dependencies with `npm install`
+First clone the repository with `git clone https://github.com/Larqqa/whee-verkkokauppa.git`\
+Then in the cloned repository, install the project's dependencies by running `npm install`
 
 ## Available Scripts
 
@@ -36,8 +36,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-(There are no tests currently)
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -53,6 +52,5 @@ Makes a new production build of the app and serves it locally.
 
 ## Other licencing & notes:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)\
 Material icons & Google fonts: [Apache 2.0 licence](http://www.apache.org/licenses/LICENSE-2.0.txt)

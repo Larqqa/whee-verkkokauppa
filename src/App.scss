@@ -1,0 +1,10 @@
+@import './styles/variables.scss';
+
+.app {
+  opacity: 1;
+  transition: opacity $transition-length ease-in;
+
+  &.hide {
+    opacity: 0;
+  }
+}

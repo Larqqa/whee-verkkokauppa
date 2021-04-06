@@ -5,13 +5,14 @@ import './CartProduct.scss';
 
 function CartProduct({ product, amount }) {
   const image = product?.image;
+  const alt = product?.alt;
   const name = product?.name;
   const price = product?.price;
 
   return (
     <div className="cart-product">
       <figure className="product-image">
-        <img src={image} alt={name} />
+        <img src={image} alt={alt} />
       </figure>
 
       <div className="product-info">
